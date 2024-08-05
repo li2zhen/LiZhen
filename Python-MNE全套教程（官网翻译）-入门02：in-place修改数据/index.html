@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="none">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,23 +17,28 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>Qiulab 笔记</title>
+  <title>Python-MNE全套教程（官网翻译）-入门02：in-place修改数据 - Qiulab 笔记</title>
 
   
-    <meta name="description" content="Qiulab学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Qiulab 笔记">
-<meta property="og:url" content="https://qiulab.work/404">
+    <meta name="description" content="官网教程翻译+个人学习python-mne的经验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python-MNE全套教程（官网翻译）-入门02：in-place修改数据">
+<meta property="og:url" content="https://qiulab.work/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A802%EF%BC%9Ain-place%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/">
 <meta property="og:site_name" content="Qiulab 笔记">
-<meta property="og:description" content="Qiulab学习笔记">
+<meta property="og:description" content="官网教程翻译+个人学习python-mne的经验">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/08/05/cUEkJtQpKgj5uqY.png">
+<meta property="article:published_time" content="2024-08-03T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-08-05T13:10:19.384Z">
 <meta property="article:author" content="Li Zhen">
-<meta property="article:tag" content="个人">
-<meta name="twitter:card" content="summary">
+<meta property="article:tag" content="MNE">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://s2.loli.net/2024/08/05/cUEkJtQpKgj5uqY.png">
   
   
   
-  <meta name="keywords" content="个人">
+  <meta name="keywords" content="MNE,python">
 
   <!-- feed -->
   
@@ -48,7 +53,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="404" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/assets/avatar/avatar.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Qiulab 笔记</div><div class="sub normal cap">欲书花叶寄朝云</div><div class="sub hover cap" style="opacity:0"> While We Are Fearless</div></a></div></header>
@@ -60,28 +65,96 @@
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/explore/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B01.1%20introduction/"><span class="title">R for data science笔记1.1 introduction</span></a><a class="item title" href="/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"><span class="title">Markdown基本语法</span></a><a class="item title" href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A803%EF%BC%9A%E4%BB%8Eraw%E6%95%B0%E6%8D%AE%E4%B8%AD%E8%A7%A3%E6%9E%90events/"><span class="title">Python-MNE全套教程（官网翻译）-入门03：从raw数据中解析events</span></a><a class="item title" href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A802%EF%BC%9Ain-place%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/"><span class="title">Python-MNE全套教程（官网翻译）-入门02：in-place修改数据</span></a><a class="item title" href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A801%EF%BC%9A%E6%A6%82%E8%BF%B0%E7%AF%87/"><span class="title">Python-MNE全套教程（官网翻译）-入门01：概述篇</span></a></div></widget>
-
-
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/li2zhen/qiulab" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/08a41b181ce68.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/3845874.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/3616429.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/942ebbf1a4b91.svg"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
 
 
-<article class='md-text error-page'>
-  <h1><img id='error' src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg' alt='404'></h1>
-  <p class='what'>
-    <strong>
-      很抱歉，您访问的页面不存在
-    </strong>
-  </p>
-  <p class='why'>
-    可能是输入地址有误或该地址已被删除
-  </p>
-  <br><br>
-  <a class='button' id='back' href="/">返回主页</a>
+
+
+<div class="article banner top"><img class="bg lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/post/MNE.png">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/python/">python</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/python/MNE/">MNE</a> <span class="sep"></span> <a class="cap breadcrumb-link" href="/categories/python/MNE/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-08-03T16:00:00.000Z">2024-08-04</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-05T13:10:19.384Z">2024-08-05</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Python-MNE全套教程（官网翻译）-入门02：in-place修改数据</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>许多MNE-Python的数据对象如Raw、epoch、Evoked等都有原地修改数据的方法，它们是可选的或必须的。在处理大型数据集时，这是有利的，因为它减少了执行计算所需的计算机内存。然而，如果你没有意识到它的发生，它可能会导致意想不到的结果。像往常一样，我们将首先导入我们需要的模块，并加载一些示例数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> mne</span><br><span class="line"></span><br><span class="line">sample_data_folder = mne.datasets.sample.data_path()</span><br><span class="line">sample_data_raw_file = sample_data_folder / <span class="string">&quot;MEG&quot;</span> / <span class="string">&quot;sample&quot;</span> / <span class="string">&quot;sample_audvis_raw.fif&quot;</span></span><br><span class="line"><span class="comment"># the preload flag loads the data into memory now</span></span><br><span class="line">raw = mne.io.read_raw_fif(sample_data_raw_file, preload=<span class="literal">True</span>)</span><br><span class="line">raw.crop(tmax=<span class="number">10.0</span>)  <span class="comment"># raw.crop() always happens in-place</span></span><br></pre></td></tr></table></figure>
+<p>这里截取数据的crop方法就是原地修改的。</p>
+<h2 id="信号预处理"><a href="#信号预处理" class="headerlink" title="信号预处理"></a>信号预处理</h2><p>大多数MNE-Python数据对象都有用于过滤的内置方法，包括高通、低通和带通滤波器(filter)、带阻滤波器(notch_filter)、希尔伯特变换(apply_hilbert)，甚至是任意或用户定义的函数(apply_function)。它们通常都是就地修改数据。</p>
+<p>所以如果我们想要保留未处理的数据以供比较，必须先进行复制。例如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">original_raw = raw.copy()</span><br><span class="line">raw.apply_hilbert()</span><br><span class="line"><span class="built_in">print</span>(</span><br><span class="line">    <span class="string">f&quot;original data type was <span class="subst">&#123;original_raw.get_data().dtype&#125;</span>, after &quot;</span></span><br><span class="line">    <span class="string">f&quot;apply_hilbert the data type changed to <span class="subst">&#123;raw.get_data().dtype&#125;</span>.&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>original data type was float64, after apply_hilbert the data type changed to complex128.</p>
+</blockquote>
+<p>可以看到，希尔伯特变换之后数据的dtype发生了改变。</p>
+<h2 id="选择通道"><a href="#选择通道" class="headerlink" title="选择通道"></a>选择通道</h2><p>选择通道方法也是原地该数据的。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;original data had <span class="subst">&#123;original_raw.info[<span class="string">&quot;nchan&quot;</span>]&#125;</span> channels.&#x27;</span>)</span><br><span class="line">original_raw.pick(<span class="string">&quot;eeg&quot;</span>)  <span class="comment"># selects only the EEG channels</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">f&#x27;after picking, it has <span class="subst">&#123;original_raw.info[<span class="string">&quot;nchan&quot;</span>]&#125;</span> channels.&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>original data had 376 channels.<br>after picking, it has 60 channels.</p>
+</blockquote>
+<h2 id="使用copy参数"><a href="#使用copy参数" class="headerlink" title="使用copy参数"></a>使用copy参数</h2><p>上面我们看到了一个使用复制方法来方便比较处理前后数据的示例。在使用某些mne-python函数时不需要这样做，因为它们有一个copy参数，可以指定copy&#x3D;True或copy&#x3D;False（原地修改，默认）。如Set_eeg_reference就是这样一个函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rereferenced_raw, ref_data = mne.set_eeg_reference(original_raw, [<span class="string">&quot;EEG 003&quot;</span>], copy=<span class="literal">True</span>)</span><br><span class="line">fig_orig = original_raw.plot()</span><br><span class="line">fig_reref = rereferenced_raw.plot()</span><br></pre></td></tr></table></figure>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://s2.loli.net/2024/08/05/cUEkJtQpKgj5uqY.png" alt="image.png"><br>可以发现original_raw没变。</p>
+<p>另一个例子是函数<code>mne.pick_info</code>，它是对mne.info字典进行操作的，而不是数据本身。</p>
+<p>总的来说，如果我们希望避免每次重新加载数据并重复之前的步骤，那么应该习惯<code>raw.copy().filter(…).plot()</code>或者<code>raw.copy().apply_proj().compute_psd().plot()</code>等写代码方式。</p>
+
+<div class="article-footer fs14">
+    <section id="references">
+      <div class="header"><span>参考资料</span></div>
+      <div class="body">
+        <ul>
+        <li class="post-title">
+          <p><a href="https://mne.tools/stable/auto_tutorials/index.html">Python-MNE教程</a></p>
+
+        </li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://qiulab.work/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A802%EF%BC%9Ain-place%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://qiulab.work/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A802%EF%BC%9Ain-place%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/&title=Python-MNE全套教程（官网翻译）-入门02：in-place修改数据 - Qiulab 笔记&pics=/assets/post/MNE.png&summary=官网教程翻译+个人学习python-mne的经验"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=Python-MNE全套教程（官网翻译）-入门02：in-place修改数据 - Qiulab 笔记&amp;body=https://qiulab.work/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A802%EF%BC%9Ain-place%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://qiulab.work/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A802%EF%BC%9Ain-place%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
 </article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A803%EF%BC%9A%E4%BB%8Eraw%E6%95%B0%E6%8D%AE%E4%B8%AD%E8%A7%A3%E6%9E%90events/">Python-MNE全套教程（官网翻译）-入门03：从raw数据中解析events</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A801%EF%BC%9A%E6%A6%82%E8%BF%B0%E7%AF%87/">Python-MNE全套教程（官网翻译）-入门01：概述篇</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="\Python-MNE全套教程（官网翻译）-入门01：概述篇\" title="Python-MNE全套教程（官网翻译）-入门01：概述篇"><span class="title">Python-MNE全套教程（官网翻译）-入门01：概述篇</span><span class="excerpt">官网教程翻译+个人学习python-mne的经验</span></a><a class="item" href="\Python-MNE全套教程（官网翻译）-入门03：从raw数据中解析events\" title="Python-MNE全套教程（官网翻译）-入门03：从raw数据中解析events"><span class="title">Python-MNE全套教程（官网翻译）-入门03：从raw数据中解析events</span><span class="excerpt">官网教程翻译+个人学习python-mne的经验</span></a><a class="item" href="\Markdown基本语法\" title="Markdown基本语法"><span class="title">Markdown基本语法</span><span class="excerpt">转载自https://github.com/younghz/Markdown以供方便参考</span></a></div></section></div>
 
 
 
@@ -89,7 +162,14 @@
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Li Zhen</a> 使用 <a href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%A1%E5%8F%B7%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-text">信号预处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%80%9A%E9%81%93"><span class="toc-text">选择通道</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8copy%E5%8F%82%E6%95%B0"><span class="toc-text">使用copy参数</span></a></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
