@@ -1,0 +1,717 @@
+
+<!DOCTYPE html><html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  
+  <title>Qiulab 笔记</title>
+
+  
+    <meta name="description" content="R for data science笔记1.1 Data visualization（上）1 介绍 “The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey“简单的图标比任何其他工具都能带来更多的信息。”——John Tukey  R有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qiulab 笔记">
+<meta property="og:url" content="https://qiulab.work/index/">
+<meta property="og:site_name" content="Qiulab 笔记">
+<meta property="og:description" content="R for data science笔记1.1 Data visualization（上）1 介绍 “The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey“简单的图标比任何其他工具都能带来更多的信息。”——John Tukey  R有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://qiulab.work/assets/gDhg-ByjoAlHjvd6o7zlx0GwisLLoO33xZ7gJGzv1_A=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/ShZQghm7SE4rAxWD-9fEFSF2rZfjuS0pZY4zispp7yk=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/xZQYR9mCljgwMDWVtBkXgxAXjWlW29v838NQGpnuMi4=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/31KdKLNXExKOAL7MtJERJ0YpXDlyAe_fuhA_Rj2_e78=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/rQQnYnTsX0wHjHSxwyGudNeX1O9XoCwpAN-v00pPBEo=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/GdClsDCPT_aocbXeTaYxZGhRlXPvYsCM97aRTzuMEtc=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/EL3c7PCEylRlOn5lChTlSso-5x5tO4QAvx_8q1_CJ6g=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/YQBYDOEpYOm-mjf9HOQz-PBbHQDLIPISEPznyuhftJc=.blob">
+<meta property="og:image" content="https://qiulab.work/assets/1z6KQkdnMCqjiowA1Nxsc2L7ycNyMIA5UeitTY72_KQ=.blob">
+<meta property="article:published_time" content="2024-08-10T08:46:24.752Z">
+<meta property="article:modified_time" content="2024-08-10T00:45:58.000Z">
+<meta property="article:author" content="Li Zhen">
+<meta property="article:tag" content="个人">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://qiulab.work/assets/gDhg-ByjoAlHjvd6o7zlx0GwisLLoO33xZ7gJGzv1_A=.blob">
+  
+  
+  
+  <meta name="keywords" content="个人">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.29.1">
+
+  
+
+  
+
+  
+</head>
+<body>
+
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/assets/avatar/avatar.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Qiulab 笔记</div><div class="sub normal cap">欲书花叶寄朝云</div><div class="sub hover cap" style="opacity:0"> While We Are Fearless</div></a></div></header>
+
+<div class="nav-area">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="站内搜索"></form><div id="search-result"></div><div class="search-no-result">没有找到内容！</div></div>
+
+
+<nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M14.25 4.48v3.057c0 .111 0 .27.02.406a.936.936 0 0 0 .445.683a.96.96 0 0 0 .783.072c.13-.04.272-.108.378-.159L17 8.005l1.124.534c.106.05.248.119.378.16a.958.958 0 0 0 .783-.073a.936.936 0 0 0 .444-.683c.021-.136.021-.295.021-.406V3.031c.113-.005.224-.01.332-.013C21.154 2.98 22 3.86 22 4.933v11.21c0 1.112-.906 2.01-2.015 2.08c-.97.06-2.108.179-2.985.41c-1.082.286-1.99 1.068-3.373 1.436c-.626.167-1.324.257-1.627.323V5.174c.32-.079 1.382-.203 1.674-.371c.184-.107.377-.216.576-.323m5.478 8.338a.75.75 0 0 1-.546.91l-4 1a.75.75 0 0 1-.364-1.456l4-1a.75.75 0 0 1 .91.546" clip-rule="evenodd"/><path fill="currentColor" d="M18.25 3.151c-.62.073-1.23.18-1.75.336a8.2 8.2 0 0 0-.75.27v3.182l.75-.356l.008-.005a1.13 1.13 0 0 1 .492-.13c.047 0 .094.004.138.01c.175.029.315.1.354.12l.009.005l.749.356V3.647z"/><path fill="currentColor" d="M12 5.214c-.334-.064-1.057-.161-1.718-.339C8.938 4.515 8.05 3.765 7 3.487c-.887-.234-2.041-.352-3.018-.412C2.886 3.007 2 3.9 2 4.998v11.146c0 1.11.906 2.01 2.015 2.079c.97.06 2.108.179 2.985.41c.486.129 1.216.431 1.873.726c1.005.451 2.052.797 3.127 1.034z" opacity=".5"/><path fill="currentColor" d="M4.273 12.818a.75.75 0 0 1 .91-.545l4 1a.75.75 0 1 1-.365 1.455l-4-1a.75.75 0 0 1-.545-.91m.909-4.545a.75.75 0 1 0-.364 1.455l4 1a.75.75 0 0 0 .364-1.455z"/></svg></a><a class="nav-item" title="探索" href="/explore/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a><a class="nav-item" title="社交" href="/friends/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m13.629 20.472l-.542.916c-.483.816-1.69.816-2.174 0l-.542-.916c-.42-.71-.63-1.066-.968-1.262c-.338-.197-.763-.204-1.613-.219c-1.256-.021-2.043-.098-2.703-.372a5 5 0 0 1-2.706-2.706C2 14.995 2 13.83 2 11.5v-1c0-3.273 0-4.91.737-6.112a5 5 0 0 1 1.65-1.651C5.59 2 7.228 2 10.5 2h3c3.273 0 4.91 0 6.113.737a5 5 0 0 1 1.65 1.65C22 5.59 22 7.228 22 10.5v1c0 2.33 0 3.495-.38 4.413a5 5 0 0 1-2.707 2.706c-.66.274-1.447.35-2.703.372c-.85.015-1.275.022-1.613.219c-.338.196-.548.551-.968 1.262" opacity=".5"/><path fill="currentColor" d="M10.99 14.308c-1.327-.978-3.49-2.84-3.49-4.593c0-2.677 2.475-3.677 4.5-1.609c2.025-2.068 4.5-1.068 4.5 1.609c0 1.752-2.163 3.615-3.49 4.593c-.454.335-.681.502-1.01.502c-.329 0-.556-.167-1.01-.502"/></svg></a></nav>
+</div>
+<div class="widgets">
+
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B01.1%20Data%20visualization%EF%BC%88%E4%B8%8B%EF%BC%89/"><span class="title">R for data science笔记1.1 Data visualization（下）</span></a><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B01.1%20Data%20visualization%EF%BC%88%E4%B8%8A%EF%BC%89/"><span class="title">R for data science笔记1.1 Data visualization（上）</span></a><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B01.0%20whole%20game/"><span class="title">R for data science笔记1.0 whole game</span></a><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B00.0%20introduction%20/"><span class="title">R for data science笔记1.1 introduction</span></a><a class="item title" href="/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/"><span class="title">Markdown基本语法</span></a><a class="item title" href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A803%EF%BC%9A%E4%BB%8Eraw%E6%95%B0%E6%8D%AE%E4%B8%AD%E8%A7%A3%E6%9E%90events/"><span class="title">Python-MNE全套教程（官网翻译）-入门03：从raw数据中解析events</span></a><a class="item title" href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A802%EF%BC%9Ain-place%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE/"><span class="title">Python-MNE全套教程（官网翻译）-入门02：in-place修改数据</span></a><a class="item title" href="/Python-MNE%E5%85%A8%E5%A5%97%E6%95%99%E7%A8%8B%EF%BC%88%E5%AE%98%E7%BD%91%E7%BF%BB%E8%AF%91%EF%BC%89-%E5%85%A5%E9%97%A801%EF%BC%9A%E6%A6%82%E8%BF%B0%E7%AF%87/"><span class="title">Python-MNE全套教程（官网翻译）-入门01：概述篇</span></a></div></widget>
+</div>
+<footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/li2zhen/qiulab" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/08a41b181ce68.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/3845874.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/3616429.svg"/></a><a class="social" href="https://" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/placeholder/social/942ebbf1a4b91.svg"/></a></div></footer>
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-08-10T08:46:24.752Z">2024-08-10</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-08-10T00:45:58.000Z">2024-08-10</time></span></div></div></div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="R-for-data-science笔记1-1-Data-visualization（上）"><a href="#R-for-data-science笔记1-1-Data-visualization（上）" class="headerlink" title="R for data science笔记1.1 Data visualization（上）"></a>R for data science笔记1.1 Data visualization（上）</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h2><blockquote>
+<p>“The simple graph has brought more information to the data analyst’s mind than any other device.” — John Tukey<br>“简单的图标比任何其他工具都能带来更多的信息。”——John Tukey</p>
+</blockquote>
+<p>R有多种图形生成系统，但<strong>ggplot2</strong>是最优雅、最通用的系统之一。ggplot2实现了<strong>图形的语法</strong>，是一个用于描述和构建图形的连贯系统。你可以通过使用ggplot2在多个地方应用它来做提高生产力。</p>
+<p>本章将教你如何<strong>使用ggplot2对数据进行可视化</strong>。我们将从创建一个简单的散点图开始，并使用它来引入美学映射和几何对象（aesthetic mappings and geometric objects ）——这是ggplot2的基本构建模块。然后，我们将介绍单变量分布的可视化，以及两个或多个变量之间的关系的可视化。最后，我们将保存您的绘图和给一些故障排除技巧。</p>
+<h3 id="1-1-事前准备"><a href="#1-1-事前准备" class="headerlink" title="1.1 事前准备"></a>1.1 事前准备</h3><p>ggplot2是tidyverse的一个核心包，首先，加载tidyver包。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>tidyverse<span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt; ── Attaching core tidyverse packages ───────────────────── tidyverse 2.0.0 ──</span></span><br><span class="line"><span class="comment">#&gt; ✔ dplyr     1.1.4     ✔ readr     2.1.5</span></span><br><span class="line"><span class="comment">#&gt; ✔ forcats   1.0.0     ✔ stringr   1.5.1</span></span><br><span class="line"><span class="comment">#&gt; ✔ ggplot2   3.5.1     ✔ tibble    3.2.1</span></span><br><span class="line"><span class="comment">#&gt; ✔ lubridate 1.9.3     ✔ tidyr     1.3.1</span></span><br><span class="line"><span class="comment">#&gt; ✔ purrr     1.0.2     </span></span><br><span class="line"><span class="comment">#&gt; ── Conflicts ─────────────────────────────────────── tidyverse_conflicts() ──</span></span><br><span class="line"><span class="comment">#&gt; ✖ dplyr::filter() masks stats::filter()</span></span><br><span class="line"><span class="comment">#&gt; ✖ dplyr::lag()    masks stats::lag()</span></span><br><span class="line"><span class="comment">#&gt; ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span><br></pre></td></tr></table></figure>
+
+<p>这一行代码加载了核心tidyverse；几乎所有数据分析中都会用到的包。它还会告诉你tidyverse中的哪些函数与R中的基本函数或你可能加载的其他包中的函数冲突。</p>
+<p>如果你运行这段代码并得到错误消息，没有名为<code>tidyverse</code>的包，你需要首先安装它，然后再次运行<code>library()</code>。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">install.packages<span class="punctuation">(</span><span class="string">&quot;tidyverse&quot;</span><span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>tidyverse<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>一个包只需要安装一次，但每次启动新会话时都需要加载它。</p>
+<p>除了tidyverse，我们还将使用<strong>palmerpenguins包</strong>，其中包含<code>penguins</code>数据集，其中包含<strong>帕尔默群岛三个岛屿上企鹅的身体测量数据</strong>，以及<strong>ggthemes包</strong>，它提供一个调色板。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">library<span class="punctuation">(</span>palmerpenguins<span class="punctuation">)</span></span><br><span class="line">library<span class="punctuation">(</span>ggthemes<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-第一步"><a href="#2-第一步" class="headerlink" title="2 第一步"></a>2 第一步</h2><p>脚蹼较长的企鹅比脚蹼较短的企鹅重还是轻？脚蹼长度和身体质量之间的关系是什么？它是正相关的？负相关的？线性吗？非线性吗？这种关系是否因企鹅的种类而异？企鹅住的那个岛旁边的那个岛呢？让我们创建可视化来回答这些问题。</p>
+<h3 id="2-1-penguins-数据格式"><a href="#2-1-penguins-数据格式" class="headerlink" title="2.1 penguins 数据格式"></a>2.1 <code>penguins</code> 数据格式</h3><p> 你可以使用在palmerpenguins，又名<code>palmerpenguins::penguins</code>中找到的penguins数据框架来检验你对这些问题的答案。数据框架是变量（列）和观测值（行）的矩形集合。企鹅包含了由克里斯汀·戈尔曼博士和南极帕尔默站收集和提供的344份观察报告。</p>
+<ul>
+<li><strong>变量variable</strong>是可以测量的数量、质量或属性。</li>
+<li><strong>值value</strong>是测量变量时的变量的状态。变量的值可能在不同测量中改变。</li>
+<li><strong>一次观测observation</strong>是在类似条件下进行的一组测量，通常在一个观测中同时对同一个对象进行所有测量。一个观测值将包含多个值，每个值与一个不同的变量相关联。我们<strong>有时将观测值称为数据点</strong>。</li>
+<li><strong>表格数据Tabular data</strong>是一组值，每个值与一个变量和一次观测相关联。如果每个值都放在自己的“单元格”中，每个变量都放在自己的列中，每次观测都放在自己的行中，那么表格数据就是<em><strong>整洁</strong></em>的。</li>
+</ul>
+<p>在控制台中输入数据框架的名称，R将打印其内容的预览。请注意，在这个预览的顶部显示的是<code>tibble</code>。在tidyverse中，我们使用名为<code>tibbles</code>的特殊数据框，您将很快了解更多有关它的信息。</p>
+<p>这个数据框包含8列。如果想查看所有变量以及每个变量的前几个观测值，可以使用<code>glimpse()</code>。或者，如果你在RStudio中，运行<code>View(penguins)</code>来打开一个交互式数据查看器。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">glimpse<span class="punctuation">(</span>penguins<span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt; Rows: 344</span></span><br><span class="line"><span class="comment">#&gt; Columns: 8</span></span><br><span class="line"><span class="comment">#&gt; $ species           &lt;fct&gt; Adelie, Adelie, Adelie, Adelie, Adelie, Adelie, A…</span></span><br><span class="line"><span class="comment">#&gt; $ island            &lt;fct&gt; Torgersen, Torgersen, Torgersen, Torgersen, Torge…</span></span><br><span class="line"><span class="comment">#&gt; $ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, NA, 36.7, 39.3, 38.9, 39.2, 34.…</span></span><br><span class="line"><span class="comment">#&gt; $ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, NA, 19.3, 20.6, 17.8, 19.6, 18.…</span></span><br><span class="line"><span class="comment">#&gt; $ flipper_length_mm &lt;int&gt; 181, 186, 195, NA, 193, 190, 181, 195, 193, 190, …</span></span><br><span class="line"><span class="comment">#&gt; $ body_mass_g       &lt;int&gt; 3750, 3800, 3250, NA, 3450, 3650, 3625, 4675, 347…</span></span><br><span class="line"><span class="comment">#&gt; $ sex               &lt;fct&gt; male, female, female, NA, female, male, female, m…</span></span><br><span class="line"><span class="comment">#&gt; $ year              &lt;int&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2…</span></span><br></pre></td></tr></table></figure>
+
+<p>根据以上：<code>penguins</code>的变量有：</p>
+<ol>
+<li><code>species</code>：企鹅种族（Adelie, Chinstrap, or Gentoo）。</li>
+<li><code>flipper_length_mm</code>：企鹅鳍的长度，单位为毫米。</li>
+<li><code>body_mass_g</code>：企鹅的体重，单位是g。</li>
+<li>等等。。。共8个</li>
+</ol>
+<h3 id="2-2-终极目标"><a href="#2-2-终极目标" class="headerlink" title="2.2 终极目标"></a>2.2 终极目标</h3><p>考虑到企鹅的种类，本章的最终目标是重建如下的可视化图，展示这些企鹅的鳍肢长度和身体质量之间的关系。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/gDhg-ByjoAlHjvd6o7zlx0GwisLLoO33xZ7gJGzv1_A=.blob"></p>
+<h3 id="2-3-创造一个ggplot"><a href="#2-3-创造一个ggplot" class="headerlink" title="2.3 创造一个ggplot"></a>2.3 创造一个ggplot</h3><p>让我们慢慢来创建一个图。</p>
+<p>在ggplot2中，我们使用<code>ggplot()</code>函数开始绘制，定义一个plot对象，然后在其中添加图层。<code>ggplot()</code>的第一个参数是在图形中使用的数据集，因此<code>ggplot(data = penguins)</code>创建了一个空的图形，准备显示企鹅的数据，但由于我们还没有告诉它如何可视化，所以现在它是空的。这不是一个非常令人兴奋的情节，但你可以把它想象成一个空画布，你将在上面绘制情节的其余图层。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> penguins<span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要告诉<code>ggplot(</code>)如何以视觉方式表示数据中的信息。<code>ggplot()</code>函数的<code>mapping</code>参数定义了如何将数据集中的变量映射到绘图的视觉属性。<code>mapping</code>参数总是在<code>aes()</code>函数中定义，<code>aes()</code>的<code>x</code>和<code>y</code>参数指定要映射到x和y轴的变量。现在，我们只将脚蹼长度映射到<code>x</code>，身体质量映射到<code>y</code>。ggplot2在<code>data</code>参数中查找映射的变量，在本例中是<code>penguins</code>。</p>
+<p>下面的图显示了添加这些映射的结果。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/ShZQghm7SE4rAxWD-9fEFSF2rZfjuS0pZY4zispp7yk=.blob"></p>
+<p>我们的空画布现在有了更多的结构——可以清楚地看到脚蹼长度将显示在哪里(在x轴上)以及身体质量将显示在哪里(在y轴上)。但企鹅本身还没有参与其中。这是因为在我们的代码中，我们还没有明确地说明如何在绘图中表示来自数据框的观察结果。</p>
+<p>为此，我们需要定义一个<strong>几何对象(geom)：它可以用图形来展现数据</strong>。这些几何对象在ggplot2中以<code>geom_</code>开头的函数提供。人们经常用图形所使用的几何类型来描述图形。例如，条形图使用条形几何<code>geom_bar()</code>，折线图使用直线几何<code>geom_line()</code>，箱线图使用boxplot几何<code>geom_boxplot()</code>，散点图使用点几何<code>geom_point()</code>，等等。</p>
+<p>函数<code>geom_point()</code>在图形中添加了一哥图层的点，这自然就创建了一个散点图。ggplot2带有许多几何函数，每个函数都为图形添加不同类型的图层。本书会介绍很多这样的几何函数。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"><span class="comment">#&gt; Warning: Removed 2 rows containing missing values or values outside the scale range</span></span><br><span class="line"><span class="comment">#&gt; (`geom_point()`).</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/xZQYR9mCljgwMDWVtBkXgxAXjWlW29v838NQGpnuMi4=.blob"></p>
+<p>现在我们有了一些看起来像散点图的东西。它还不符合我们的最终目标，但通过这个图，我们可以回答开始的问题：“脚蹼长度和体重之间的关系是什么?”它们之间的关系似乎是正相关的，而且是相当线性的，以及中等强度的关系，在这条直线上没有太多散点。结论：鳍肢较长的企鹅通常体型较大。</p>
+<p>在我们向图中添加更多图层之前，让我们暂停一下，回顾一下我们得到的警告消息：</p>
+<blockquote>
+<p>Removed 2 rows containing missing values <code>geom_point()</code></p>
+</blockquote>
+<p>我们看到这个消息是因为在我们的数据集中有两个企鹅的身体质量和&#x2F;或鳍肢长度值缺失，ggplot2无法绘制。和R一样，ggplot2遵循的理念是，缺失的值永远不应该悄无声息地丢失。在处理真实数据时，这种类型的警告可能是最常见的一种——<strong>缺失值是一个非常常见的问题</strong>，但在本章余下的绘图中，我们将取消这个警告，以免它出现在我们绘制的每个绘图旁边。</p>
+<h3 id="2-4-添加美观元素和图层"><a href="#2-4-添加美观元素和图层" class="headerlink" title="2.4 添加美观元素和图层"></a>2.4 添加美观元素和图层</h3><p>散点图在显示两个定量变量之间的关系时很有用，但最好对这两个变量之间的任何明显关系保持怀疑，并询问是否有其他变量可以解释或改变这种明显关系的性质。例如，脚蹼长度和身体质量之间的关系是否因物种而异?让我们将物种纳入我们的图中，看看这是否揭示了这些变量之间的明显关系的其他见解。我们用不同颜色的点来表示物种。</p>
+<p>为了实现这一点，我们需要修改aesthetic 还是 geom？如果你猜到了，“在<code>aes()</code>中更改，即在aesthetic中，你已经掌握了使用ggplot2创建数据可视化的窍门！</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">,</span> color <span class="operator">=</span> species<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/31KdKLNXExKOAL7MtJERJ0YpXDlyAe_fuhA_Rj2_e78=.blob"></p>
+<p>当一个分类变量被映射到aesthetic时，ggplot2将自动为变量的每个（即三个物种中的每一个）分配一个唯一的aesthetic值（这里是唯一的颜色），这个过程称为<strong>scaling（缩放）</strong>。ggplot2还会添加一个图例来说明哪个值对应哪个水平。</p>
+<p>现在让我们再添加一个图层：一条显示身体质量和脚蹼长度之间关系的平滑曲线。在你继续之前，回头看看上面的代码，并考虑一下我们如何将其添加到我们现有的绘图中。</p>
+<p>由于这是一个表示我们数据的新几何对象，我们将在我们的点几何上添加一个新的几何层：<code>geom_smooth()</code>。我们将指定基于<code>method = &quot;lm&quot;</code>的线性模型绘制最佳拟合直线。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">,</span> color <span class="operator">=</span> species<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_smooth<span class="punctuation">(</span>method <span class="operator">=</span> <span class="string">&quot;lm&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/rQQnYnTsX0wHjHSxwyGudNeX1O9XoCwpAN-v00pPBEo=.blob"></p>
+<p>我们成功地添加了线条，但这个图形看起来不太对，它应该只有一条线表示整个数据集，而不是现在这样，每个企鹅物种都有单独的线。</p>
+<p>当aesthetic映射在<code>ggplot()</code>中定义时，在全局级别上，它们被传递到绘图的每个后续几何层。然而，ggplot2中的每个几何函数也可以接受一个映射参数，这允许在局部层次上的aesthetic映射添加到那些从全局层次继承的映射上。因为我们希望点的颜色是基于物种的，但又不希望线条将它们分开，所以我们应该只为<code>geom_point()</code>指定<code>color = species</code>。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span>mapping <span class="operator">=</span> aes<span class="punctuation">(</span>color <span class="operator">=</span> species<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_smooth<span class="punctuation">(</span>method <span class="operator">=</span> <span class="string">&quot;lm&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/GdClsDCPT_aocbXeTaYxZGhRlXPvYsCM97aRTzuMEtc=.blob"></p>
+<p>现在我们仍然需要为每种企鹅使用不同的形状、改进标签。</p>
+<p>在图中仅使用颜色来表示信息通常不是一个好主意，因为由于色盲或其他色觉差异，人们对颜色的感知不同。因此，除了色彩，我们还可以将物种映射到标签形状上。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span>mapping <span class="operator">=</span> aes<span class="punctuation">(</span>color <span class="operator">=</span> species<span class="punctuation">,</span> shape <span class="operator">=</span> species<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_smooth<span class="punctuation">(</span>method <span class="operator">=</span> <span class="string">&quot;lm&quot;</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/EL3c7PCEylRlOn5lChTlSso-5x5tO4QAvx_8q1_CJ6g=.blob"></p>
+<p>注意图例也会自动更新，以反映点的不同形状。</p>
+<p>最后，我们可以在新图层中使用<code>labs()</code>函数来改进我们绘图的标签。<code>labs()</code>的一些参数可能不言自明：title添加标题，subtitle添加副标题。其他参数匹配aesthetic映射，x是x轴标签，y是y轴标签，而color和shape定义图例的标签。此外，我们还可以使用ggthemes包中的<code>scale_color_colorblind(</code>)函数将调色板改进为色盲友好的。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span>aes<span class="punctuation">(</span>color <span class="operator">=</span> species<span class="punctuation">,</span> shape <span class="operator">=</span> species<span class="punctuation">)</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_smooth<span class="punctuation">(</span>method <span class="operator">=</span> <span class="string">&quot;lm&quot;</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  labs<span class="punctuation">(</span></span><br><span class="line">    title <span class="operator">=</span> <span class="string">&quot;Body mass and flipper length&quot;</span><span class="punctuation">,</span></span><br><span class="line">    subtitle <span class="operator">=</span> <span class="string">&quot;Dimensions for Adelie, Chinstrap, and Gentoo Penguins&quot;</span><span class="punctuation">,</span></span><br><span class="line">    x <span class="operator">=</span> <span class="string">&quot;Flipper length (mm)&quot;</span><span class="punctuation">,</span> y <span class="operator">=</span> <span class="string">&quot;Body mass (g)&quot;</span><span class="punctuation">,</span></span><br><span class="line">    color <span class="operator">=</span> <span class="string">&quot;Species&quot;</span><span class="punctuation">,</span> shape <span class="operator">=</span> <span class="string">&quot;Species&quot;</span></span><br><span class="line">  <span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  scale_color_colorblind<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/YQBYDOEpYOm-mjf9HOQz-PBbHQDLIPISEPznyuhftJc=.blob"></p>
+<h3 id="2-5-练习"><a href="#2-5-练习" class="headerlink" title="2.5 练习"></a>2.5 练习</h3><ol>
+<li><code>penguins</code>中有多少行？有多少列？</li>
+<li><code>bill_depth_mm</code>变量描述的是什么？阅读<code>penguins</code>的帮助来找出答案。</li>
+<li>绘制<code>bill_depth_mm</code>与<code>bill_length_mm</code>的散点图。也就是说，绘制一个散点图，将<code>bill_depth_mm</code>设为y轴，将<code>bill_length_mm</code>设为x轴。描述这两个变量之间的关系。</li>
+<li>如果绘制<code>species</code>与<code>bill_depth_mm</code>的散点图会发生什么？什么是更好的<code>geom</code>选择？</li>
+<li>为什么下面的代码会报错？如何修复？</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span>data <span class="operator">=</span> penguins<span class="punctuation">)</span> <span class="operator">+</span> </span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>na.rm</code>参数在<code>geom_point()</code>中做什么？它的默认值是什么？创建一个散点图，并成功地将此参数设置为TRUE。</li>
+<li>在前一个练习中绘制的图形中添加如下说明：Data come from the palmerpenguins package。提示：请查看<code>labs()</code>的文档。</li>
+<li>重现以下可视化效果。<code>bill_depth_mm</code>应该映射到什么？它应该在全局级别上映射还是在几何级别？</li>
+</ol>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/1z6KQkdnMCqjiowA1Nxsc2L7ycNyMIA5UeitTY72_KQ=.blob"></p>
+<ol>
+<li>在你的脑海中运行这段代码，并预测输出将是什么样子。然后，在R中运行代码并检查你的预测。</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">,</span> color <span class="operator">=</span> island<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_smooth<span class="punctuation">(</span>se <span class="operator">=</span> <span class="literal">FALSE</span><span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>这两幅图看起来会不同吗？为什么&#x2F;为什么不？</li>
+</ol>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">ggplot<span class="punctuation">(</span></span><br><span class="line">  data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">  mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line"><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_smooth<span class="punctuation">(</span><span class="punctuation">)</span></span><br><span class="line"></span><br><span class="line">ggplot<span class="punctuation">(</span><span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_point<span class="punctuation">(</span></span><br><span class="line">    data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">    mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">)</span> <span class="operator">+</span></span><br><span class="line">  geom_smooth<span class="punctuation">(</span></span><br><span class="line">    data <span class="operator">=</span> penguins<span class="punctuation">,</span></span><br><span class="line">    mapping <span class="operator">=</span> aes<span class="punctuation">(</span>x <span class="operator">=</span> flipper_length_mm<span class="punctuation">,</span> y <span class="operator">=</span> body_mass_g<span class="punctuation">)</span></span><br><span class="line">  <span class="punctuation">)</span></span><br></pre></td></tr></table></figure>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://qiulab.work/index/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://qiulab.work/index/&title= - Qiulab 笔记&summary=R for data science笔记1.1 Data visualization（上）1 介绍
+“The simple graph has brought more information to the data analyst’..."><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject= - Qiulab 笔记&amp;body=https://qiulab.work/index/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://qiulab.work/index/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/R%20for%20data%20science%E7%AC%94%E8%AE%B00.0%20introduction%20/">R for data science笔记1.1 introduction</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="\Python-MNE全套教程（官网翻译）-入门01：概述篇\" title="Python-MNE全套教程（官网翻译）-入门01：概述篇"><span class="title">Python-MNE全套教程（官网翻译）-入门01：概述篇</span><span class="excerpt">官网教程翻译+个人学习python-mne的经验</span></a></div></section></div>
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Li Zhen</a> 使用 <a href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1">Stellar 1.29.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-for-data-science%E7%AC%94%E8%AE%B01-1-Data-visualization%EF%BC%88%E4%B8%8A%EF%BC%89"><span class="toc-text">R for data science笔记1.1 Data visualization（上）</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">1 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E4%BA%8B%E5%89%8D%E5%87%86%E5%A4%87"><span class="toc-text">1.1 事前准备</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E7%AC%AC%E4%B8%80%E6%AD%A5"><span class="toc-text">2 第一步</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-penguins-%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F"><span class="toc-text">2.1 penguins 数据格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E7%BB%88%E6%9E%81%E7%9B%AE%E6%A0%87"><span class="toc-text">2.2 终极目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%88%9B%E9%80%A0%E4%B8%80%E4%B8%AAggplot"><span class="toc-text">2.3 创造一个ggplot</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E6%B7%BB%E5%8A%A0%E7%BE%8E%E8%A7%82%E5%85%83%E7%B4%A0%E5%92%8C%E5%9B%BE%E5%B1%82"><span class="toc-text">2.4 添加美观元素和图层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E7%BB%83%E4%B9%A0"><span class="toc-text">2.5 练习</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+<script type="text/javascript">
+  const ctx = {
+    date_suffix: {
+      just: `刚刚`,
+      min: `分钟前`,
+      hour: `小时前`,
+      day: `天前`,
+    },
+    root : `/`,
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+  };
+  const deps = {
+    jquery: `https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js`,
+    marked: `https://cdn.jsdelivr.net/npm/marked@13.0.1/lib/marked.umd.min.js`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')){
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+    
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      let retryTimes = 3;
+      utils.onLoading(el);
+      function req() {
+        return new Promise((resolve, reject) => {
+          let status = 0; // 0 等待 1 完成 2 超时
+          let timer = setTimeout(() => {
+            if (status === 0) {
+              status = 2;
+              timer = null;
+              reject('请求超时');
+              if (retryTimes == 0) {
+                onFailure();
+              }
+            }
+          }, 5000);
+          fetch(url).then(function(response) {
+            if (status !== 2) {
+              clearTimeout(timer);
+              resolve(response);
+              timer = null;
+              status = 1;
+            }
+            if (response.ok) {
+              return response.json();
+            }
+            throw new Error('Network response was not ok.');
+          }).then(function(data) {
+            retryTimes = 0;
+            utils.onLoadSuccess(el);
+            callback(data);
+          }).catch(function(error) {
+            if (retryTimes > 0) {
+              retryTimes -= 1;
+              setTimeout(() => {
+                req();
+              }, 5000);
+            } else {
+              utils.onLoadFailure(el);
+              onFailure();
+            }
+          });
+        });
+      }
+      req();
+    },
+  };
+</script>
+
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+
+<!-- required -->
+<script src="/js/main.js?v=1.29.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    applyThemeToGiscus(theme)
+  }
+
+  const applyThemeToGiscus = (theme) => {
+    theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+
+    const messages = {
+      light: `切换到浅色模式`,
+      dark: `切换到深色模式`,
+      auto: `切换到跟随系统配色`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    }
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://cdn.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script defer src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+</script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error)';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const els = document.getElementsByClassName('ds-memos');
+    if (els != undefined && els.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3.1/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
