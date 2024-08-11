@@ -187,10 +187,11 @@
 <footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/">分类</a><a href="/">标签</a><a href="/">归档</a></div><div class="sitemap-group"><span class="fs15">项目</span><a href="/">开源库</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/">友链</a><a href="/">留言板</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/">关于本站</a><a href="/">GitHub</a></div></div><div class="text"><center>
 </br>
 </br>
+@2024 <a href="https://github.com/li2zhen/qiulab"> <b>Qulab</b> </a>使用<a href="https://github.com/xaoxuu/hexo-theme-stellar"> <b>Stellar</b> </a>主题创建
 <script type="text/javascript">
 function show_runtime() {
     window.setTimeout("show_runtime()", 1000);
-    X = new Date("10/20/2023 00:00:00");
+    X = new Date("08/01/2024 00:00:00");
     Y = new Date();
     T = (Y.getTime() - X.getTime());
     M = 24 * 60 * 60 * 1000;
@@ -201,7 +202,7 @@ function show_runtime() {
     c = (b - B) * 60;
     C = Math.floor((b - B) * 60);
     D = Math.floor((c - C) * 60);
-    runtime_span.innerHTML = "⏲️本站已运行 " + A + "天|" + B + "小时|" + C + "分|" + D + "秒⏲️"
+    runtime_span.innerHTML = "🍺本站已运行 " + A + "天|" + B + "小时|" + C + "分|" + D + "秒🍺"
 }
 show_runtime();
 </script>
@@ -241,7 +242,7 @@ show_runtime();
     ctx.search = {};
     ctx.search.service = `local_search`;
     if (ctx.search.service == 'local_search') {
-      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"sort":"-date"}`);
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"codeblock":true,"sort":"-date"}`);
       ctx.search[ctx.search.service] = service_obj;
     }
   }
