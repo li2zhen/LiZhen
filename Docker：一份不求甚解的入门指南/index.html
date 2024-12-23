@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,22 +17,25 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>分类：学习笔记 - 荔枝树</title>
+  <title>Docker：一份不求甚解的入门指南 - 荔枝树</title>
 
   
-    <meta name="description" content="lychee的学习笔记">
-<meta property="og:type" content="website">
-<meta property="og:title" content="荔枝树">
-<meta property="og:url" content="https://qiulab.work/categories/markdown/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+    <meta name="description" content="荔枝树不求甚解的杂耍笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker：一份不求甚解的入门指南">
+<meta property="og:url" content="https://qiulab.work/Docker%EF%BC%9A%E4%B8%80%E4%BB%BD%E4%B8%8D%E6%B1%82%E7%94%9A%E8%A7%A3%E7%9A%84%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/">
 <meta property="og:site_name" content="荔枝树">
-<meta property="og:description" content="lychee的学习笔记">
+<meta property="og:description" content="荔枝树不求甚解的杂耍笔记">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2024-12-23T10:15:35.558Z">
 <meta property="article:author" content="lychee">
+<meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
   
   
   
-  
+  <meta name="keywords" content="docker">
 
   <!-- feed -->
   
@@ -49,7 +52,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="undefined" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/assets/avatar/avatar.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">荔枝树</div><div class="sub normal cap">欲书花叶寄朝云</div><div class="sub hover cap" style="opacity:0"> While We Are Fearless</div></a></div></header>
@@ -61,28 +64,183 @@
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24"><circle cx="50" cy="50" r="20" fill="currentColor"/><g fill="none" stroke="currentColor" stroke-width="4"><line x1="50" y1="5" x2="50" y2="20"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line><line x1="50" y1="80" x2="50" y2="95"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line><line x1="5" y1="50" x2="20" y2="50"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line><line x1="80" y1="50" x2="95" y2="50"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line><line x1="20" y1="20" x2="30" y2="30"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line><line x1="70" y1="70" x2="80" y2="80"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line><line x1="70" y1="30" x2="80" y2="20"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line><line x1="20" y1="80" x2="30" y2="70"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 50 50" to="360 50 50" dur="6s" repeatCount="indefinite"/></line></g></svg><b style="vertical-align:middle;margin-bottom:5px;">POST</b></a><a class="nav-item" title="灵感" href="/hint/" style="color:#FFFF00"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24"><circle cx="50" cy="50" r="10" fill="currentColor"><animate attributeName="cy" values="50;10;50" dur="2s" repeatCount="indefinite"/><animate attributeName="r" values="10;5;10" dur="2s" repeatCount="indefinite"/></circle><circle cx="30" cy="70" r="8" fill="currentColor"><animate attributeName="cy" values="70;30;70" dur="3s" repeatCount="indefinite"/><animate attributeName="r" values="8;4;8" dur="3s" repeatCount="indefinite"/></circle><circle cx="70" cy="90" r="12" fill="currentColor"><animate attributeName="cy" values="90;50;90" dur="4s" repeatCount="indefinite"/><animate attributeName="r" values="12;6;12" dur="4s" repeatCount="indefinite"/></circle></svg><b style="vertical-align:middle;margin-bottom:5px;">HINT</b></a><a class="nav-item" title="摸鱼" href="/fun/" style="color:#F44336"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24"><path fill="currentColor"><animate attributeName="d" dur="5s" repeatCount="indefinite" values="M0 50 Q 25 10 50 50 T 100 50 V 100 H 0 Z;M0 50 Q 25 90 50 50 T 100 50 V 100 H 0 Z;M0 50 Q 25 10 50 50 T 100 50 V 100 H 0 Z"/></path></svg><b style="vertical-align:middle;margin-bottom:5px;">FUN</b></a><a class="nav-item" title="文档" href="/wiki/" style="color:#3DC550"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24"><g transform="translate(50 50)"><circle r="45" fill="none" stroke="currentColor" stroke-width="10"/><circle r="35" fill="none" stroke="currentColor" stroke-width="5" stroke-dasharray="5,5" stroke-dashoffset="0"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 0 0" to="360 0 0" dur="5s" repeatCount="indefinite"/></circle></g></svg><b style="vertical-align:middle;margin-bottom:5px;">WIKI</b></a><a class="nav-item" title="更多" href="https://qiulab.cn/" style="color:#FA6400"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="2" d="M10 50 Q 30 10, 50 50 T 90 50"><animate attributeName="stroke-dasharray" values="0, 200; 150, 50; 0, 200" dur="2s" repeatCount="indefinite"/></path></svg><b style="vertical-align:middle;margin-bottom:5px;">MORE</b></a><a class="nav-item" title="追剧" href="/cinemas/" style="color:#800080"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24"><g><!-- Head --><circle cx="50" cy="30" r="10" fill="currentColor"/><!-- Body --><rect x="45" y="40" width="10" height="20" fill="currentColor"/><!-- Arms --><line x1="45" y1="40" x2="35" y2="50" stroke="currentColor" stroke-width="2"/><line x1="55" y1="40" x2="65" y2="50" stroke="currentColor" stroke-width="2"/><!-- Legs --><line x1="50" y1="60" x2="40" y2="80" stroke="currentColor" stroke-width="2"><animate attributeName="y2" values="80;60;80" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite"/></line><line x1="50" y1="60" x2="60" y2="80" stroke="currentColor" stroke-width="2"><animate attributeName="y2" values="80;60;80" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite"/></line><!-- Body Animation --><animateTransform attributeName="transform" type="translate" values="0,0;0,-20;0,0" keyTimes="0;0.5;1" dur="1s" repeatCount="indefinite"/></g></svg><b style="vertical-align:middle;margin-bottom:5px;">movie</b></a><a class="nav-item" title="追番" href="/bangumis/" style="color:#00FFFF"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="24" height="24"><rect x="25" y="25" width="50" height="50" fill="currentColor"><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="2s" repeatCount="indefinite"/></rect></svg><b style="vertical-align:middle;margin-bottom:5px;">2D-W</b></a><a class="nav-item" title="枫林资源分享小站" href="https://share-shmu.cn/" style="color:#FFC0CB"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg><b style="vertical-align:middle;margin-bottom:5px;">FOSS</b></a></nav>
 </div>
 <div class="widgets">
-<widget class="widget-wrapper markdown"><div class="widget-header dis-select"><span class="name">😃welcome😃</span></div><div class="widget-body fs14"><p>欢迎光临！这里是荔枝树~</p>
-<hr>
-<span id="jinrishici-sentence"></span>
-<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
-</div></widget>
 
-<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/1.1%20%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%80%E4%BA%9B%E6%A6%82%E5%BF%B5%E5%92%8C%E7%BB%84%E4%BB%B6/"><span class="title">d2l：1.1 机器学习的一些概念和组件</span></a><a class="item title" href="/1.0%20%E5%87%86%E5%A4%87/"><span class="title">d2l：1.0 准备工作</span></a><a class="item title" href="/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E7%9A%84%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%AD%A6%E4%B9%A0/"><span class="title">d2l：从零开始的机器学习笔记</span></a><a class="item title" href="/%E4%B8%80%E4%BB%BD%E8%87%AA%E6%88%91%E4%BB%8B%E7%BB%8D/"><span class="title">一份自我介绍</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B07%EF%BC%9A%E4%BF%AE%E5%A4%8DBEM%E5%92%8C%E5%A4%B4%E8%A1%A8%E9%9D%A2/"><span class="title">Python-MNE-源空间和正模型07：修复BEM和头表面</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B03%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%BA%90%E9%85%8D%E5%87%86%E7%9A%84%E6%96%B9%E6%B3%95/"><span class="title">Python-MNE-源空间和正模型03：自动源配准的方法</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B02%EF%BC%9A%E6%BA%90%E9%85%8D%E5%87%86%E5%92%8C%E5%9D%90%E6%A0%87%E6%A1%86%E6%9E%B6/"><span class="title">Python-MNE-源空间和正模型02：源配准和坐标系</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B01%EF%BC%9AFreeSurfer%20MRI%E9%87%8D%E5%BB%BA/"><span class="title">Python-MNE-源空间和正模型01：FreeSurfer MRI重建</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%86%E9%97%AE%E9%A2%9803%EF%BC%9A%E4%BD%BF%E7%94%A8MNE%E3%80%81dSPM%E3%80%81sLORETA%E5%92%8CeLORETA%E8%BF%9B%E8%A1%8C%E6%BA%90%E5%AE%9A%E4%BD%8D/"><span class="title">Python-MNE-源定位和逆问题03：使用MNE、dSPM、sLORETA和eLORETA进行源定位</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E5%AE%9A%E4%BD%8D%E5%92%8C%E9%80%86%E9%97%AE%E9%A2%9802%EF%BC%9A%E6%BA%90%E5%AE%9A%E4%BD%8D%E4%B8%8E%E7%AD%89%E6%95%88%E7%94%B5%E6%B5%81%E5%81%B6%E6%9E%81%E5%AD%90%EF%BC%88ECD%EF%BC%89/"><span class="title">Python-MNE-源定位和逆问题02：源定位与等效电流偶极子（ECD）</span></a></div></widget>
+
+<widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/R%20%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E3%80%81%E8%BF%90%E7%AE%97%E5%92%8C%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/"><span class="title">Docker：一份不求甚解的入门指南</span></a><a class="item title" href="/%E5%9C%A8stella%E5%8D%9A%E5%AE%A2%E5%BA%95%E9%83%A8%E6%B7%BB%E5%8A%A0Moe-Counter%E8%AE%A1%E6%95%B0%E5%99%A8/"><span class="title">在stella博客底部添加Moe-Counter计数器</span></a><a class="item title" href="/Docker%EF%BC%9A%E4%B8%80%E4%BB%BD%E4%B8%8D%E6%B1%82%E7%94%9A%E8%A7%A3%E7%9A%84%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"><span class="title">Docker：一份不求甚解的入门指南</span></a><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B01.1%20Data%20visualization%EF%BC%88%E4%B8%8A%EF%BC%89/"><span class="title">R for data science笔记1.1 Data visualization（上）</span></a><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B01.0%20whole%20game/"><span class="title">R for data science笔记1.0 whole game</span></a><a class="item title" href="/R%20for%20data%20science%E7%AC%94%E8%AE%B00.1%20introduction/"><span class="title">R for data science笔记0.1 introduction</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B07%EF%BC%9A%E4%BF%AE%E5%A4%8DBEM%E5%92%8C%E5%A4%B4%E8%A1%A8%E9%9D%A2/"><span class="title">Python-MNE-源空间和正模型07：修复BEM和头表面</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B03%EF%BC%9A%E8%87%AA%E5%8A%A8%E6%BA%90%E9%85%8D%E5%87%86%E7%9A%84%E6%96%B9%E6%B3%95/"><span class="title">Python-MNE-源空间和正模型03：自动源配准的方法</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B02%EF%BC%9A%E6%BA%90%E9%85%8D%E5%87%86%E5%92%8C%E5%9D%90%E6%A0%87%E6%A1%86%E6%9E%B6/"><span class="title">Python-MNE-源空间和正模型02：源配准和坐标系</span></a><a class="item title" href="/Python-MNE-%E6%BA%90%E7%A9%BA%E9%97%B4%E5%92%8C%E6%AD%A3%E6%A8%A1%E5%9E%8B01%EF%BC%9AFreeSurfer%20MRI%E9%87%8D%E5%BB%BA/"><span class="title">Python-MNE-源空间和正模型01：FreeSurfer MRI重建</span></a></div></widget>
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/li2zhen/qiulab" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/08a41b181ce68.svg"/></a><a class="social" href="https://music.163.com/#/user/home?id=570149558" target="_blank" rel="external nofollow noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/3845874.svg"/></a><a class="social" onclick="switchTheme()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="currentColor" fill-rule="evenodd" d="M582.4 326.4c-140.8 0-256 115.2-256 256s115.2 256 256 256 256-115.2 256-256-115.2-256-256-256z m0 448c-70.4 0-131.2-36.8-164.8-92.8 12.8 3.2 27.2 4.8 40 4.8 121.6 0 219.2-99.2 219.2-219.2 0-17.6-1.6-35.2-6.4-52.8 60.8 32 102.4 96 102.4 169.6 1.6 104-84.8 190.4-190.4 190.4zM582.4 262.4c17.6 0 32-14.4 32-32v-128c0-17.6-14.4-32-32-32s-32 14.4-32 32v128c0 17.6 14.4 32 32 32zM262.4 582.4c0-17.6-14.4-32-32-32h-128c-17.6 0-32 14.4-32 32s14.4 32 32 32h128c17.6 0 32-14.4 32-32zM310.4 356.8c6.4 6.4 14.4 9.6 22.4 9.6 8 0 16-3.2 22.4-9.6 12.8-12.8 12.8-32 0-44.8l-91.2-91.2c-12.8-12.8-32-12.8-44.8 0-12.8 12.8-12.8 32 0 44.8l91.2 91.2zM944 220.8c-12.8-12.8-32-12.8-44.8 0l-91.2 91.2c-12.8 12.8-12.8 32 0 44.8 6.4 6.4 14.4 9.6 22.4 9.6 8 0 16-3.2 22.4-9.6l91.2-91.2c12.8-12.8 12.8-33.6 0-44.8zM310.4 808l-91.2 91.2c-12.8 12.8-12.8 32 0 44.8 6.4 6.4 14.4 9.6 22.4 9.6 8 0 16-3.2 22.4-9.6l91.2-91.2c12.8-12.8 12.8-32 0-44.8-11.2-11.2-32-11.2-44.8 0z"></path></svg></a><a class="social" href="/about/#comments" rel="noopener noreferrer"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/942ebbf1a4b91.svg"/></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="/assets/avatar/avatar.png" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">荔枝树</div><div class="sub normal cap">欲书花叶寄朝云</div><div class="sub hover cap" style="opacity:0"> While We Are Fearless</div></a></div></header>
-
- 
 
 
 
 
-<div class="navbar top"><nav class="post"><a href="/">近期发布</a><a class="active" href="/categories">分类：学习笔记</a><a href="/tags">标签</a><a href="/archives">归档</a></nav></div>
-<div class="post-list post"><a class="post-card post" href="/Markdown%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95/">
-<article class="md-text"><div class="post-cover"><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/assets/post/markdown.jpeg"/></div><h2 class="post-title">Markdown基本语法</h2><div class="excerpt"><p>转载自https://github.com/younghz/Markdown以供方便参考</p></div><div class="meta cap"><span class="cap" id="post-meta"><svg style="margin-bottom:2px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M6.94 2c.416 0 .753.324.753.724v1.46c.668-.012 1.417-.012 2.26-.012h4.015c.842 0 1.591 0 2.259.013v-1.46c0-.4.337-.725.753-.725s.753.324.753.724V4.25c1.445.111 2.394.384 3.09 1.055c.698.67.982 1.582 1.097 2.972L22 9H2v-.724c.116-1.39.4-2.302 1.097-2.972c.697-.67 1.645-.944 3.09-1.055V2.724c0-.4.337-.724.753-.724"/><path fill="currentColor" d="M22 14v-2c0-.839-.004-2.335-.017-3H2.01c-.013.665-.01 2.161-.01 3v2c0 3.771 0 5.657 1.172 6.828C4.343 22 6.228 22 10 22h4c3.77 0 5.656 0 6.828-1.172C22 19.658 22 17.772 22 14" opacity=".5"/><path fill="currentColor" d="M18 17a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0a1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><time datetime="2024-08-04T16:00:00.000Z">2024-08-05</time></span><span class="cap breadcrumb"><svg style="margin-bottom:1px" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M2 6.95c0-.883 0-1.324.07-1.692A4 4 0 0 1 5.257 2.07C5.626 2 6.068 2 6.95 2c.386 0 .58 0 .766.017a4 4 0 0 1 2.18.904c.144.119.28.255.554.529L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .848.352C14.098 6 14.675 6 15.828 6h.374c2.632 0 3.949 0 4.804.77c.079.07.154.145.224.224c.77.855.77 2.172.77 4.804V14c0 3.771 0 5.657-1.172 6.828C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172C2 19.657 2 17.771 2 14z" opacity=".5"/><path fill="currentColor" d="M20 6.238c0-.298-.005-.475-.025-.63a3 3 0 0 0-2.583-2.582C17.197 3 16.965 3 16.5 3H9.988c.116.104.247.234.462.45L11 4c.816.816 1.224 1.224 1.712 1.495a4 4 0 0 0 .849.352C14.098 6 14.675 6 15.829 6h.373c1.78 0 2.957 0 3.798.238"/><path fill="currentColor" fill-rule="evenodd" d="M12.25 10a.75.75 0 0 1 .75-.75h5a.75.75 0 0 1 0 1.5h-5a.75.75 0 0 1-.75-.75" clip-rule="evenodd"/></svg><span>markdown</span></span></div></article>
-</a></div>
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2024-12-22T16:00:00.000Z">2024-12-23</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2024-12-23T10:15:35.558Z">2024-12-23</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Docker：一份不求甚解的入门指南</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h2 id="Docker是啥意思？"><a href="#Docker是啥意思？" class="headerlink" title="Docker是啥意思？"></a>Docker是啥意思？</h2><p>Docker，即“码头工人”，的名字灵感来自于海运集装箱（shipping container）的概念。在现代物流中，集装箱<strong>标准化</strong>了货物运输，使得货物可以在不同的运输方式（如船舶、火车、卡车）之间无缝转移。同样，Docker 通过容器化技术<strong>标准化</strong>了软件的交付和部署，使得应用程序可以在不同的计算环境中，无需麻烦的配置就可以无缝运行。</p>
+<h3 id="Docker-简介"><a href="#Docker-简介" class="headerlink" title="Docker 简介"></a>Docker 简介</h3><ul>
+<li><strong>创立背景</strong>：Docker 最初由 Solomon Hykes 于 2013 年在一家名为 dotCloud 的公司内部项目中开发。后来，这个项目发展成为一个独立的基于<strong>go语言</strong>的Apache2.0协议<strong>开源项目</strong>，并迅速获得了广泛的关注和应用，现在github地址是：<a href="https://github.com/moby/moby%E3%80%82">https://github.com/moby/moby。</a></li>
+</ul>
+<blockquote>
+<p>moby 是 Docker 公司在 2017 年宣布的一个开源项目，旨在为容器化技术提供一个模块化的系统Docker 使用 Moby 项目中的组件来构建其平台。换句话说，Moby 是 Docker 的一个构建块集合，是 Docker 背后的技术基础。Moby 项目为 Docker 提供了一个实验和创新的空间，Docker 则是一个更成熟、更用户友好的产品，面向生产环境。</p>
+</blockquote>
+<ul>
+<li><strong>功能</strong>：Docker 允许开发者封装应用程序及其依赖项到一个可移植的容器中，然后可以在任何支持 Docker 的机器上运行这些容器。这种方式确保了开发、测试和生产环境的一致性，减少了“在我这里可以运行”的问题。</li>
+<li><strong>生态系统</strong>：Docker 发展出一个庞大的生态系统，包括 Docker Hub（一个容器镜像的集中存储库），以及各种工具和插件来支持容器的管理和编排。</li>
+</ul>
+<h2 id="Docker和虚拟机的关系"><a href="#Docker和虚拟机的关系" class="headerlink" title="Docker和虚拟机的关系"></a>Docker和虚拟机的关系</h2><p>Docker 和虚拟机（VM）都是用于隔离应用程序和提高资源利用率的技术，但它们在实现方式和特性上有一些差异。</p>
+<h4 id="区别：更少的虚拟化抽象层、更快的速度"><a href="#区别：更少的虚拟化抽象层、更快的速度" class="headerlink" title="区别：更少的虚拟化抽象层、更快的速度"></a>区别：更少的虚拟化抽象层、更快的速度</h4><ol>
+<li><strong>架构</strong>：<ul>
+<li><strong>Docker</strong>：Docker 使用容器技术，容器<strong>共享宿主机的操作系统内核</strong>。每个容器包含应用程序及其运行时环境，但不包含完整的操作系统。</li>
+<li><strong>虚拟机</strong>：每个虚拟机运行在一个完整的操作系统上，并通过虚拟化层（Hypervisor）与宿主机硬件交互。<strong>每个 VM 包含自己的内核和操作系统实例</strong>。</li>
+</ul>
+</li>
+<li><strong>资源占用</strong>：<ul>
+<li><strong>Docker</strong>：因为共享内核，Docker 容器<strong>启动更快，占用的资源更少</strong>，非常适合需要快速启动和停止的轻量级应用。</li>
+<li><strong>虚拟机</strong>：由于每个 VM 都运行一个完整的操作系统，启动较慢，占用更多的内存和存储空间。</li>
+</ul>
+</li>
+<li><strong>性能</strong>：<ul>
+<li><strong>Docker</strong>：由于没有虚拟化层的开销，Docker 容器的性能接近于原生。</li>
+<li><strong>虚拟机</strong>：性能可能会受到虚拟化层的影响，尤其是在 I&#x2F;O 密集型应用中。</li>
+</ul>
+</li>
+<li><strong>隔离性</strong>：<ul>
+<li><strong>Docker</strong>：提供<strong>进程级别的隔离</strong>，适用于需要高效资源利用的场景。</li>
+<li><strong>虚拟机</strong>：提供<strong>操作系统级别的隔离</strong>，适合需要强隔离的场景。</li>
+</ul>
+</li>
+</ol>
+<p>当然，如果我们用windows系统下载docker desktop，会发现它会帮助我们安装WSL，WSL 允许用户在 Windows 上运行 Linux 二进制可执行文件，WSL 2使用真正的 Linux 内核，通过 Hyper-V 虚拟机技术提供更好的性能和兼容性。在 Windows 上运行 Docker 时，Docker Desktop 可以利用 WSL 2 来提供更高效的容器运行环境，提高文件系统性能。</p>
+<h2 id="Docker核心技术"><a href="#Docker核心技术" class="headerlink" title="Docker核心技术:"></a>Docker核心技术:</h2><p>Docker 是一个开源的容器化平台，用于开发、部署和运行应用程序。其核心技术包含多个层面，包括容器化、镜像构建、容器编排等。</p>
+<h4 id="1-容器化技术"><a href="#1-容器化技术" class="headerlink" title="1.容器化技术"></a>1.<strong>容器化技术</strong></h4><p>Docker 的核心是<strong>容器</strong>，它将应用程序及其依赖的环境打包在一个独立的、隔离的环境中运行。容器可以在任何支持 Docker 的机器上以相同的方式运行，无论是在开发环境、测试环境还是生产环境中。</p>
+<ul>
+<li><strong>轻量级</strong>：容器共享宿主操作系统的内核，而不是像虚拟机那样运行一个完整的操作系统，因此它们比虚拟机轻量，启动速度更快。</li>
+<li><strong>隔离性</strong>：每个容器都是相互隔离的，容器内的应用程序和宿主操作系统及其他容器不会相互干扰。</li>
+</ul>
+<h4 id="2-镜像（Images）"><a href="#2-镜像（Images）" class="headerlink" title="2.镜像（Images）"></a>2.<strong>镜像（Images）</strong></h4><p>Docker 镜像是创建容器的模板。镜像包含了容器需要的所有内容（操作系统、应用程序、库文件等）。Docker 镜像是<strong>不可变的</strong>，一旦创建，它就不能更改。镜像可以通过 Dockerfile 来构建。</p>
+<ul>
+<li><strong>镜像层次</strong>：Docker 镜像采用分层架构，多个镜像层可以共享，相同的基础层不会被重复存储，从而节省空间。</li>
+<li><strong>版本管理</strong>：每次创建新镜像时，Docker 会为镜像打标签（如<code>v1.0</code>），用户可以根据标签来指定使用哪个版本的镜像。</li>
+</ul>
+<h4 id="3-Dockerfile"><a href="#3-Dockerfile" class="headerlink" title="3.Dockerfile"></a>3.<strong>Dockerfile</strong></h4><p>Dockerfile 是一个文本文件，其中包含构建 Docker 镜像的所有命令。它通过一组指令描述了如何从基础镜像开始，安装应用程序和依赖项，配置环境等。Dockerfile 是构建和自动化镜像的关键。</p>
+<p>常见的 Dockerfile 指令包括：</p>
+<ul>
+<li><code>FROM</code>: 指定基础镜像。</li>
+<li><code>RUN</code>: 执行命令，如安装软件包。</li>
+<li><code>COPY</code>&#x2F;<code>ADD</code>: 将文件从宿主系统复制到镜像中。</li>
+<li><code>CMD</code>: 容器启动时默认执行的命令。</li>
+</ul>
+<h4 id="4-引擎（Docker-Engine）"><a href="#4-引擎（Docker-Engine）" class="headerlink" title="4.引擎（Docker Engine）"></a>4.<strong>引擎（Docker Engine）</strong></h4><p>Docker Engine 是 Docker 的核心组件，它是一个客户端-服务器架构，负责容器的创建、管理、调度等操作。Docker Engine 包括以下几个部分：</p>
+<ul>
+<li>*<em>Docker Daemon (</em><em><strong><code>dockerd</code></strong></em>*)**：Docker 守护进程，运行在后台，负责管理容器、镜像和网络等。</li>
+<li><strong>Docker CLI</strong>：命令行界面，用户通过它与 Docker Daemon 交互。常见的 Docker 命令如<code>docker run</code>、<code>docker build</code>、<code>docker ps</code>等。</li>
+<li><strong>Docker API</strong>：提供 HTTP 接口，允许程序通过 REST API 与 Docker Daemon 进行交互。</li>
+</ul>
+<h4 id="5-网络（Networking）"><a href="#5-网络（Networking）" class="headerlink" title="5.网络（Networking）"></a>5.<strong>网络（Networking）</strong></h4><p>Docker 提供了多种网络模式来连接容器，确保它们之间可以通信。常见的网络模式包括：</p>
+<ul>
+<li><strong>Bridge Network</strong>：这是默认的网络模式，适用于单个主机上的容器互联。</li>
+<li><strong>Host Network</strong>：容器直接使用宿主操作系统的网络堆栈。</li>
+<li><strong>Overlay Network</strong>：用于跨多台机器（主机）上的容器之间的通信，适用于 Docker Swarm 等集群模式。</li>
+<li><strong>None Network</strong>：容器没有网络连接。</li>
+</ul>
+<h4 id="6-卷（Volumes）"><a href="#6-卷（Volumes）" class="headerlink" title="6.卷（Volumes）"></a>6.<strong>卷（Volumes）</strong></h4><p>Docker 卷用于持久化和共享容器的数据。容器的文件系统是临时的，一旦容器被删除，数据也会丢失。通过 Docker 卷，可以将数据持久化到宿主机的文件系统中，并且可以在多个容器之间共享。</p>
+<ul>
+<li><strong>创建卷</strong>：<code>docker volume create</code>用于创建一个新的卷。</li>
+<li><strong>挂载卷</strong>：通过<code>-v</code>选项将卷挂载到容器中，例如<code>docker run -v myvolume:/data</code>。</li>
+</ul>
+<h4 id="7-Docker-Compose"><a href="#7-Docker-Compose" class="headerlink" title="7.Docker Compose"></a>7.<strong>Docker Compose</strong></h4><p>Docker Compose 是一个用于定义和运行多容器 Docker 应用的工具。它通过一个<code>docker-compose.yml</code>文件来定义多个容器之间的服务、网络、卷等，简化了容器化应用的管理。使用 Compose 可以轻松地启动和停止多个相互依赖的容器。</p>
+<p>常见操作：</p>
+<ul>
+<li><code>docker-compose up</code>: 启动所有定义的服务容器。</li>
+<li><code>docker-compose down</code>: 停止并删除服务容器。</li>
+</ul>
+<h4 id="8-Docker-Hub-和注册表（Registry）"><a href="#8-Docker-Hub-和注册表（Registry）" class="headerlink" title="8.Docker Hub 和注册表（Registry）"></a>8.<strong>Docker Hub 和注册表（Registry）</strong></h4><p>Docker Hub 是 Docker 官方的公共镜像仓库，用户可以从中拉取公共镜像，或者上传自己构建的镜像。除了 Docker Hub，用户还可以使用私有镜像仓库（如企业内部的 Docker Registry）。</p>
+<ul>
+<li><strong>推送镜像</strong>：将本地镜像推送到镜像仓库（如 Docker Hub）。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker push &lt;username&gt;/&lt;image_name&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure></li>
+<li><strong>拉取镜像</strong>：从镜像仓库拉取镜像。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull &lt;image_name&gt;:&lt;tag&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="9-容器编排（Orchestration）"><a href="#9-容器编排（Orchestration）" class="headerlink" title="9.容器编排（Orchestration）"></a>9.<strong>容器编排（Orchestration）</strong></h4><p>Docker 支持容器编排，主要通过<strong>Docker Swarm</strong>和<strong>Kubernetes</strong>来实现：</p>
+<ul>
+<li><strong>Docker Swarm</strong>：Docker 自带的集群管理工具，用于管理和调度多个 Docker 主机上的容器。它提供了自动化的服务部署、扩展、负载均衡等功能。</li>
+<li><strong>Kubernetes</strong>：更强大且更广泛使用的容器编排平台，通常用于大规模生产环境中。虽然 Kubernetes 是独立的项目，但 Docker 容器通常是其运行的基础。</li>
+</ul>
+<h4 id="10-安全性"><a href="#10-安全性" class="headerlink" title="10.安全性"></a>10.<strong>安全性</strong></h4><p>Docker 提供了多种方式确保容器的安全性，主要包括：</p>
+<ul>
+<li><strong>用户命名空间</strong>：将容器内的用户映射到宿主机上的非特权用户，从而提高安全性。</li>
+<li><strong>Seccomp</strong>：一个内核安全模块，用于限制容器访问宿主操作系统的系统调用。</li>
+<li><strong>AppArmor &#x2F; SELinux</strong>：强化的安全机制，用于保护 Docker 容器免受潜在的恶意攻击。</li>
+</ul>
+<p>此外，Docker 还支持镜像签名和内容信任功能，确保镜像的来源和内容不被篡改。</p>
+
+<div class="article-footer fs14">
+    <section id="references">
+      <div class="header"><span>参考资料</span></div>
+      <div class="body">
+        <ul>
+        <li class="post-title">
+          <p><a href="https://docker.com/">docker官网</a></p>
+
+        </li>
+        </ul>
+      </div>
+    </section>
+    
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+    <section id="share">
+      <div class="header"><span>分享文章</span></div>
+      <div class="body">
+        <div class="link"><input class="copy-area" readonly="true" id="copy-link" value="https://qiulab.work/Docker%EF%BC%9A%E4%B8%80%E4%BB%BD%E4%B8%8D%E6%B1%82%E7%94%9A%E8%A7%A3%E7%9A%84%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/" /></div>
+        <div class="social-wrap dis-select"><a class="social share-item wechat" onclick="util.toggle(&quot;qrcode-wechat&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/b32ef3da1162a.svg" /></a><a class="social share-item weibo" target="_blank" rel="external nofollow noopener noreferrer" href="https://service.weibo.com/share/share.php?url=https://qiulab.work/Docker%EF%BC%9A%E4%B8%80%E4%BB%BD%E4%B8%8D%E6%B1%82%E7%94%9A%E8%A7%A3%E7%9A%84%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/&title=Docker：一份不求甚解的入门指南 - 荔枝树&summary=荔枝树不求甚解的杂耍笔记"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/80c07e4dbb303.svg" /></a><a class="social share-item email" href="mailto:?subject=Docker：一份不求甚解的入门指南 - 荔枝树&amp;body=https://qiulab.work/Docker%EF%BC%9A%E4%B8%80%E4%BB%BD%E4%B8%8D%E6%B1%82%E7%94%9A%E8%A7%A3%E7%9A%84%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/a1b00e20f425d.svg" /></a><a class="social share-item link" onclick="util.copy(&quot;copy-link&quot;, &quot;复制成功&quot;)"><img class="lazy"  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/social/8411ed322ced6.svg" /></a></div>
+        
+        <div class="qrcode" id="qrcode-wechat" style="opacity:0;height:0">
+          <img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="https://api.qrserver.com/v1/create-qr-code/?size=256x256&data=https://qiulab.work/Docker%EF%BC%9A%E4%B8%80%E4%BB%BD%E4%B8%8D%E6%B1%82%E7%94%9A%E8%A7%A3%E7%9A%84%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97/"/>
+        </div>
+        
+      </div>
+    </section>
+    </div>
+</article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">较早文章</div><a href="/%E5%9C%A8stella%E5%8D%9A%E5%AE%A2%E5%BA%95%E9%83%A8%E6%B7%BB%E5%8A%A0Moe-Counter%E8%AE%A1%E6%95%B0%E5%99%A8/">在stella博客底部添加Moe-Counter计数器</a></div></section></div>
+
+<div class="related-wrap" id="related-posts">
+    <section class='header'>
+      <div class='title cap theme'>您可能感兴趣的文章</div>
+    </section>
+    <section class='body'>
+    <div class="related-posts"><a class="item" href="\Markdown基本语法\" title="Markdown基本语法"><span class="title">Markdown基本语法</span><span class="excerpt">转载自https://github.com/younghz/Markdown以供方便参考</span></a></div></section></div>
+
+
+  <div class="related-wrap md-text" id="comments">
+    <section class='header cmt-title cap theme'>
+      <p>在这里🌼留下足迹🐾</p>
+
+    </section>
+    <section class='body cmt-body twikoo'>
+      
+
+<div id="twikoo_container"><svg class="loading" style="vertical-align:middle;fill:currentColor;overflow:hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2709"><path d="M832 512c0-176-144-320-320-320V128c211.2 0 384 172.8 384 384h-64zM192 512c0 176 144 320 320 320v64C300.8 896 128 723.2 128 512h64z" p-id="2710"></path></svg></div>
+    </section>
+  </div>
+
 
 
 <footer class="page-footer footnote"><hr><div class="sitemap"><div class="sitemap-group"><span class="fs15">博客</span><a href="/">近期</a><a href="/categories/">分类</a><a href="/fun/">摸鱼</a><a href="/hint/">灵感</a></div><div class="sitemap-group"><span class="fs15">项目</span><a href="/wiki">Python-MNE笔记</a><a href="/wiki">r4ds笔记</a><a href="/wiki">分子克隆笔记</a><a href="/wiki">学习摄影：从原理到应用</a></div><div class="sitemap-group"><span class="fs15">社交</span><a href="/">友链</a><a href="/about/#comments">留言板</a></div><div class="sitemap-group"><span class="fs15">更多</span><a href="/about/">关于本站</a><a href="https://github.com/li2zhen">GitHub</a></div></div><div class="text"><center>
@@ -116,7 +274,14 @@ show_runtime();
 </center>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E6%98%AF%E5%95%A5%E6%84%8F%E6%80%9D%EF%BC%9F"><span class="toc-text">Docker是啥意思？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-%E7%AE%80%E4%BB%8B"><span class="toc-text">Docker 简介</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%92%8C%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-text">Docker和虚拟机的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB%EF%BC%9A%E6%9B%B4%E5%B0%91%E7%9A%84%E8%99%9A%E6%8B%9F%E5%8C%96%E6%8A%BD%E8%B1%A1%E5%B1%82%E3%80%81%E6%9B%B4%E5%BF%AB%E7%9A%84%E9%80%9F%E5%BA%A6"><span class="toc-text">区别：更少的虚拟化抽象层、更快的速度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF"><span class="toc-text">Docker核心技术:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%B9%E5%99%A8%E5%8C%96%E6%8A%80%E6%9C%AF"><span class="toc-text">1.容器化技术</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%95%9C%E5%83%8F%EF%BC%88Images%EF%BC%89"><span class="toc-text">2.镜像（Images）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Dockerfile"><span class="toc-text">3.Dockerfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%BC%95%E6%93%8E%EF%BC%88Docker-Engine%EF%BC%89"><span class="toc-text">4.引擎（Docker Engine）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%BD%91%E7%BB%9C%EF%BC%88Networking%EF%BC%89"><span class="toc-text">5.网络（Networking）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E5%8D%B7%EF%BC%88Volumes%EF%BC%89"><span class="toc-text">6.卷（Volumes）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-Docker-Compose"><span class="toc-text">7.Docker Compose</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-Docker-Hub-%E5%92%8C%E6%B3%A8%E5%86%8C%E8%A1%A8%EF%BC%88Registry%EF%BC%89"><span class="toc-text">8.Docker Hub 和注册表（Registry）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E5%AE%B9%E5%99%A8%E7%BC%96%E6%8E%92%EF%BC%88Orchestration%EF%BC%89"><span class="toc-text">9.容器编排（Orchestration）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#10-%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-text">10.安全性</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
@@ -438,6 +603,22 @@ show_runtime();
 
 
 <!-- optional -->
+
+  <script type="module">
+  const el = document.getElementById('twikoo_container');
+  util.viewportLazyload(el, load_twikoo, false);
+
+  function load_twikoo() {
+    if (!el) return;
+    utils.js('https://gcore.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js', {defer: true}).then(function () {
+      const path = el.getAttribute('comment_id') ?? decodeURI(window.location.pathname);
+      twikoo.init(Object.assign({"js":"https://gcore.jsdelivr.net/npm/twikoo@1.6.8/dist/twikoo.all.min.js","envId":"https://twikoo-comment-setup.vercel.app/"}, {
+        el: '#twikoo_container',
+        path: path,
+      }));
+    });
+  }
+</script>
 
 
 
